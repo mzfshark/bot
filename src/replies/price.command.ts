@@ -41,6 +41,8 @@ export let priceCLNYperONE = 0;
 export let priceONEperUSD = 0;
 export let priceCLNYperUSD = 0;
 export let priceSLPperUSD = 0;
+export let priceCLPUperUSD = 0;
+export let priceCLPWperUSD = 0;
 
 let currBlockNumCached = 0;
 export let totalTransactionValueCached = 0;
@@ -80,6 +82,10 @@ interface TokenBoughtListing {
       priceCLNYperUSD = clnyPrices[1] * 1e-36;
       priceSLPperUSD =
         (await clnyLiquidityMining.methods.getSLPPrice().call()) * 1e-18;
+      priceCLPUperUSD =
+        (await clnyLiquidityMining.methods.getCLPUPrice().call()) * 1e-18;
+      priceCLPWperUSD =
+        (await clnyLiquidityMining.methods.getCLPWPrice().call()) * 1e-18;
     } catch (error) {
       console.log('pricing error', error);
     }
@@ -279,6 +285,8 @@ export const getPrice = async (
       priceCLNYperONE.toFixed(3)
     )} ONE**
 1 SLP \\~ **$${escapeDot(priceSLPperUSD.toFixed(3))}**
+1 CLP WONE \\~ **$${escapeDot(priceCLPWperUSD.toFixed(3))}**
+1 CLP USDC \\~ **$${escapeDot(priceCLPUperUSD.toFixed(3))}**
     `.trim();
 
     let earningSpeedResponse = '';
@@ -336,6 +344,8 @@ ${footer}
     if (includeDexscreener) {
       return (
         `[Dexscreener](https:\\/\\/dexscreener\\.com\\/harmony\\/0xcd818813f038a4d1a27c84d24d74bbc21551fa83)` +
+        `[Dexscreener](https:\\/\\/dexscreener\\.com\\/harmony\\/0x8A1A4957153f9055aF0AEC3Bdc1a247D74d0e869)` +
+        `[Dexscreener](https:\\/\\/dexscreener\\.com\\/harmony\\/0xD5D191c733306A8Fe9C9A3166D9cbe2a0E407979)` +
         '\n' +
         response
       );
