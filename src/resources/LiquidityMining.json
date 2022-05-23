@@ -49,6 +49,32 @@
       "stateMutability": "view",
       "inputs": []
     },
+        {
+      "name": "getCLPUPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "type": "function",
+      "stateMutability": "view",
+      "inputs": []
+    },
+        {
+      "name": "getCLPWPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "type": "function",
+      "stateMutability": "view",
+      "inputs": []
+    },
     {
       "type": "function",
       "inputs": [],
